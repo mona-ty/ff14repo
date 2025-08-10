@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>極永遠の闇：青ギミック判定（3クリック）</title>
+  <title>極永遠の闇：内外判定</title>
   <style>
     :root { --bg:#e6edf3; --fg:#222; --accent:#444; --muted:#555; --inner:#0f766e; --outer:#b45309; --inner-bg:#b2f5e9; --outer-bg:#ffe8b3; }
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
-    .wrap{max-width:760px;margin:auto;padding:14px}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding:14px;max-width:760px;margin:auto}
     .title{font-size:20px;font-weight:800;margin:4px 0 12px}
     .card{background:#f9fafb;border:1px solid #bbb;border-radius:12px;padding:12px;margin:8px 0;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+    .label-small{font-size:12px;color:var(--muted);margin-bottom:4px}
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
     .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .btn{display:flex;align-items:center;justify-content:center;min-height:60px;background:#f0f1f3;border:2px solid #ccc;border-radius:10px;cursor:pointer;font-weight:800;font-size:18px;color:var(--fg)}
@@ -31,39 +30,40 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="title">極永遠の闇：青ギミック判定（<b>3クリック</b>）</div>
+  <div class="title">極永遠の闇：内外判定</div>
 
-    <div class="card">
-      <div class="grid4" id="seqTiles"></div>
+  <div class="card">
+    <div class="label-small">内外選択</div>
+    <div class="grid4" id="seqTiles"></div>
+  </div>
+
+  <div class="card">
+    <div class="label-small">開始番号</div>
+    <div class="grid4">
+      <button class="btn" data-start="1">1</button>
+      <button class="btn" data-start="2">2</button>
+      <button class="btn" data-start="3">3</button>
+      <button class="btn" data-start="4">4</button>
     </div>
+  </div>
 
-    <div class="card">
-      <div class="grid4">
-        <button class="btn" data-start="1">1</button>
-        <button class="btn" data-start="2">2</button>
-        <button class="btn" data-start="3">3</button>
-        <button class="btn" data-start="4">4</button>
-      </div>
+  <div class="card">
+    <div class="label-small">散開選択</div>
+    <div class="row2">
+      <button class="btn" id="btnDouble">4:4 / 二重</button>
+      <button class="btn" id="btnQuad">ペア / 四重</button>
     </div>
+  </div>
 
-    <div class="card">
-      <div class="row2">
-        <button class="btn" id="btnDouble">4:4 / 二重</button>
-        <button class="btn" id="btnQuad">ペア / 四重</button>
-      </div>
+  <div class="card" style="text-align:center">
+    <div class="seg" style="display:inline-block">
+      <span id="resSeq" class="result-big">—</span>
     </div>
-
-    <div class="card" style="text-align:center">
-      <div class="seg" style="display:inline-block">
-        <span id="resSeq" class="result-big">—</span>
-      </div>
-      <span id="resType" class="badge">—</span>
-      <div id="resSub" class="muted"></div>
-      <div class="toolbar">
-        <button class="mini" id="reset">リセット</button>
-        <button class="mini" id="copy">コピー</button>
-      </div>
+    <span id="resType" class="badge">—</span>
+    <div id="resSub" class="muted"></div>
+    <div class="toolbar">
+      <button class="mini" id="reset">リセット</button>
+      <button class="mini" id="copy">コピー</button>
     </div>
   </div>
 
